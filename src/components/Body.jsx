@@ -3,10 +3,13 @@ import RestrauntCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext"
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const {user, setUser} = useContext(UserContext)
   const filterRestaurants = (restaurants, searchText) => {
     return restaurants.filter((restaurant) =>
       restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -37,7 +40,7 @@ const Body = () => {
 
   return (
     <>
-      <div className="search-container">
+      <div className="p-5 ">
         <input
           placeholder="Search Restaurants ..."
           value={searchText}
@@ -46,14 +49,19 @@ const Body = () => {
             const data = filterRestaurants(restaurants, e.target.value);
             // console.log(data);
             setFilteredRestaurants(data);
+            className="focus:bg-green-100 p-2 m-2"
           }}
-        />
 
-        <div className="restaurant-list">
+        />
+          <input className="mx-5 p-2" value={user} onChange={(e)=>setUser(e.target.value)} />
+
+
+        <div className="flex flex-wrap justify-between">
           {filteredRestaurants.map((restaurant) => (
             <Link
               to={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
+              
             >
               <RestrauntCard {...restaurant.info} />
             </Link>

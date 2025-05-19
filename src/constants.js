@@ -3,6 +3,7 @@ export const IMG_CDN_URL =
 
 export const MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.08950&lng=80.27390&restaurantId=" 
 
+export const Logo = "https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"
 export const restaurantList = [
     {
         "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
